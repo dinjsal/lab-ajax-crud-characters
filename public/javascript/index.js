@@ -20,7 +20,18 @@ window.addEventListener("load", () => {
 
   document
     .getElementById("fetch-one")
-    .addEventListener("click", function (event) {});
+    .addEventListener("click", async (event) => {
+      const id = document.querySelector("input[name=character-id]").value;
+      const result = await charactersAPI.getOneRegister(id);
+      console.log(result);
+      const charactersDiv = document.querySelector(".characters-container");
+      charactersDiv.innerHTML += `
+      <div class="character-info">
+      <div class="name"> Character Name: ${character.name}</div>
+      <div class="occupation"> Character Occupation: ${character.occupation}</div>
+      <div class="weapon"> Character Weapon: ${character.weapon}</div>
+        `;
+    });
 
   document
     .getElementById("delete-one")
